@@ -54,11 +54,11 @@
 		9112DFD5285391410036AEBD /* Totality */ = {
 			isa = PBXGroup;
 			children = (
+				9149DFCD2857ADE40015B1E6 /* View */,
 				9112DFEA28539E1B0036AEBD /* Info.plist */,
 				9112DFD6285391410036AEBD /* TotalityApp.swift */,
 				9112DFDA285391440036AEBD /* Assets.xcassets */,
 				9112DFDC285391440036AEBD /* Preview Content */,
-				9112DFEB2853BB160036AEBD /* New.swift */,
 				9117C029285785A400784CDC /* SwiftUIView.swift */,
 			);
 			path = Totality;
@@ -70,6 +70,14 @@
 				9112DFDD285391440036AEBD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9149DFCD2857ADE40015B1E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9112DFEB2853BB160036AEBD /* New.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
