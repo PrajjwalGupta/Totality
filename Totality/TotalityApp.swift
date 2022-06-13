@@ -11,7 +11,8 @@ import SwiftUI
 struct TotalityApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            //SwiftUIView()
+            New()
         }
     }
 }
