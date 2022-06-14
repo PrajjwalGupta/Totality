@@ -11,7 +11,6 @@
 		9112DFDB285391440036AEBD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DFDA285391440036AEBD /* Assets.xcassets */; };
 		9112DFDE285391440036AEBD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9112DFDD285391440036AEBD /* Preview Assets.xcassets */; };
 		9112DFEC2853BB160036AEBD /* New.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9112DFEB2853BB160036AEBD /* New.swift */; };
-		9117C02A285785A400784CDC /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9117C029285785A400784CDC /* SwiftUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,7 +20,6 @@
 		9112DFDD285391440036AEBD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9112DFEA28539E1B0036AEBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		9112DFEB2853BB160036AEBD /* New.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = New.swift; sourceTree = "<group>"; };
-		9117C029285785A400784CDC /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +57,6 @@
 				9112DFD6285391410036AEBD /* TotalityApp.swift */,
 				9112DFDA285391440036AEBD /* Assets.xcassets */,
 				9112DFDC285391440036AEBD /* Preview Content */,
-				9117C029285785A400784CDC /* SwiftUIView.swift */,
 			);
 			path = Totality;
 			sourceTree = "<group>";
@@ -152,7 +149,6 @@
 			files = (
 				9112DFD7285391410036AEBD /* TotalityApp.swift in Sources */,
 				9112DFEC2853BB160036AEBD /* New.swift in Sources */,
-				9117C02A285785A400784CDC /* SwiftUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

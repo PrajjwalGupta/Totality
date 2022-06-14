@@ -22,91 +22,86 @@ struct DataChild: Codable {
 }
 
 struct New: View {
+    
     @State var empData = [DataChild]()
-    @State var isExpanded: Bool = false
+    
+    @State private var isExpanded: Bool = false
+    
     var body: some View {
+        
         NavigationView {
             
             List {
+                
                 ForEach(empData, id: \.id){ item in
-                    
-                        
-                        VStack {
-                            HStack {
-                                Text(item.employee_name)
-                                    .font(.title)
+                    VStack {
+                        HStack {
+                            Text(item.employee_name)
+                                .font(.title)
                                 .padding(.top)
-//                                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-//                                    .frame(maxWidth: .infinity)
-//                                    .padding(.trailing)
-                                    
-                            }.frame(maxWidth: .infinity)
+                            Spacer()
                             
-                           
-                            HStack {
-                                HStack {
-                                    Text("Emp_Age:")
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                        .frame(width: 95 , height: 15)
-                                        .background(Color.gray)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(10)
-                                    Text("\(item.employee_age)")
-                                        .font(.callout)
-                                        .fontWeight(.regular)
-                                        .padding(.trailing, 5)
-                                }
-                                HStack {
-                                    Text("Emp_Salary:")
-                                        .font(.caption)
-                                        .fontWeight(.medium)
-                                        .frame(width: 96 , height: 15)
-                                        .background(Color.gray)
-                                        .foregroundColor(.white)
-                                        .cornerRadius(10)
-                                    Text("\(item.employee_salary)")
-                                        .font(.callout)
-                                        .fontWeight(.regular)
-                                        .padding(.trailing, 5)
-                                }
-                            }
-                        }
-                        .alert("copy/delete",isPresented: $isExpanded) {
-                            Button  {
-                                let newId = item.id + 100
-                                let newTab = DataChild(id: newId, employee_name: item.employee_name, employee_salary: item.employee_salary, employee_age: item.employee_age, profile_image: item.profile_image)
-                                empData.append(newTab)
+                            Button {
+                                isExpanded = true
                             } label: {
-                                Text("Copy")
-
+                                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
                             }
                         }
-//                        .swipeActions(edge: .leading, allowsFullSwipe: false) {
-//                            Button  {
-//                                let newId = item.id + 100
-//                                let newTab = DataChild(id: newId, employee_name: item.employee_name, employee_salary: item.employee_salary, employee_age: item.employee_age, profile_image: item.profile_image)
-//                                empData.append(newTab)
-//                            } label: {
-//                                Text("Copy")
-//
-//                            }
-//                        }
+                        HStack {
+                            HStack {
+                                Text("Emp_Age:")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .frame(width: 95 , height: 15)
+                                    .background(Color.gray)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                Text("\(item.employee_age)")
+                                    .font(.callout)
+                                    .fontWeight(.regular)
+                                    .padding(.trailing, 5)
+                            }
+                            HStack {
+                                Text("Emp_Salary:")
+                                    .font(.caption)
+                                    .fontWeight(.medium)
+                                    .frame(width: 96 , height: 15)
+                                    .background(Color.gray)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                                Text("\(item.employee_salary)")
+                                    .font(.callout)
+                                    .fontWeight(.regular)
+                                    .padding(.trailing, 5)
+                            }
+                        }
+                    }
+                    .confirmationDialog("Copy or Delete ?", isPresented: $isExpanded) {
+                        Button  {
+                            let newId = item.id + 100
+                            let newTab = DataChild(id: newId, employee_name: item.employee_name, employee_salary: item.employee_salary, employee_age: item.employee_age, profile_image: item.profile_image)
+                            empData.append(newTab)
+                            print(newId)
+                            print()
+                        }
+                    label: {
+                        Text("Copy")
+                    }
+                        Button  {
+                            let itemId = item.id
+                            empData.remove(at: itemId)
+                        }
+                    label: {
+                        Text("Delete")
+                    }
                         
-                      
-                    
+                    }
                 }
-                .onDelete(perform: { indexSet in
-                    deleteAction(indexSet)
-                })
             }
             .onAppear(perform: getEmpData)
             .navigationTitle("Employee Details")
-           // .navigationBarTitleDisplayMode(.inline)
+            
         }
-    }
-    func deleteAction(_ index: IndexSet) {
-        empData.remove(atOffsets: index)
     }
     func getEmpData() {
         guard let url = URL(string: "https://dummy.restapiexample.com/api/v1/employees") else {
