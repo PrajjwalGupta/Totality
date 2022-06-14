@@ -22,17 +22,11 @@ struct DataChild: Codable {
 }
 
 struct New: View {
-    
     @State var empData = [DataChild]()
-    
     @State private var isExpanded: Bool = false
-    
     var body: some View {
-        
         NavigationView {
-            
             List {
-                
                 ForEach(empData, id: \.id){ item in
                     VStack {
                         HStack {
@@ -40,12 +34,6 @@ struct New: View {
                                 .font(.title)
                                 .padding(.top)
                             Spacer()
-                            
-                            Button {
-                                isExpanded = true
-                            } label: {
-                                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
-                            }
                         }
                         HStack {
                             HStack {
@@ -76,13 +64,16 @@ struct New: View {
                             }
                         }
                     }
+                    .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 5.0, perform: {
+                        isExpanded = true
+                    })
                     .confirmationDialog("Copy or Delete ?", isPresented: $isExpanded) {
                         Button  {
-                            let newId = item.id + 100
-                            let newTab = DataChild(id: newId, employee_name: item.employee_name, employee_salary: item.employee_salary, employee_age: item.employee_age, profile_image: item.profile_image)
+                            let newId2 = item.id
+                            let newTab = DataChild(id: newId2, employee_name: item.employee_name, employee_salary: item.employee_salary, employee_age: item.employee_age, profile_image: item.profile_image)
+                            print(newId2)
                             empData.append(newTab)
-                            print(newId)
-                            print()
+                            isExpanded = false
                         }
                     label: {
                         Text("Copy")
@@ -90,6 +81,7 @@ struct New: View {
                         Button  {
                             let itemId = item.id
                             empData.remove(at: itemId)
+                            isExpanded = false
                         }
                     label: {
                         Text("Delete")
@@ -100,7 +92,6 @@ struct New: View {
             }
             .onAppear(perform: getEmpData)
             .navigationTitle("Employee Details")
-            
         }
     }
     func getEmpData() {
